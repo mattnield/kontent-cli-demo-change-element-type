@@ -8,7 +8,6 @@ import { ConvertTextToRichText } from "./Utils/change-field-type";
 const migration: MigrationModule = {
   order: 2,
   run: async (apiClient: ManagementClient) => {
-    throw new Error('Stop here');
     await ConvertTextToRichText(apiClient, "article", "title", "Title", "h1", undefined);
   },
 };
