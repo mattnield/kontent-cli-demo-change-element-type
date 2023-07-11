@@ -27,7 +27,7 @@ This creates a named pair of values in the `.environments.json` file, unless you
 
 ### Restoring
 
-To speed things up, there is a backup of the data type and content items included in this repository. This can be used with the Kontent.ai Backup Manager. You can modify the files in the `kbm` folder to add your project ID and API keys to make this work using the following scripts:
+To speed things up, there is a backup of the data type and content items included in this repository. This can be used with the [Kontent.ai Backup Manager](https://github.com/kontent-ai/backup-manager-js). You can modify the files in the `kbm` folder to add your project ID and API keys to make this work using the following scripts:
 
 ```sh
 kbm --config=restore.json
