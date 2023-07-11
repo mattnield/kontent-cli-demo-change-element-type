@@ -1,7 +1,7 @@
 {
-  "name": "kontent-migrations-boilerplate",
-  "version": "2.0.0",
-  "description": "Boilerplate with migration samples",
+  "name": "kontent-demo-change-element-types",
+  "version": "1.0.0",
+  "description": "Boilerplate with migration samples to convert element type from Text to RichText",
   "main": "index.ts",
   "scripts": {
     "migrate:all": "tsc && kontent migration run --all --environment DEV",
@@ -24,21 +24,24 @@
     "kontent",
     "cli"
   ],
-  "author": "Kontent s.r.o.",
+  "author": "Matt Nield",
   "license": "MIT",
   "dependencies": {
     "@kontent-ai/cli": "^0.6.0",
+    "@kontent-ai/delivery-sdk": "^12.3.0",
     "@kontent-ai/management-sdk": "^3.1.0",
-    "dotenv": "^16.0.2"
+    "axios": "^1.1.2"
   },
   "devDependencies": {
+    "@types/node": "^18.8.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
-    "eslint": "^8.22.0",
-    "eslint-config-prettier": "^8.5.0",
     "typescript": "^4.8.2"
   }
 }
