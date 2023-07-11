@@ -1,0 +1,10 @@
+{
+  "projectId": "<PROJECT_ID>",
+  "apiKey": "<API_KEY>>",
+  "zipFilename": "api-demo",
+  "action": "backup",
+  "enableLog": false,
+  "force": true,
+  "skipValidation":true,
+  "baseUrl": null
+}

@@ -1,0 +1,9 @@
+{
+  "projectId": "<PROJECT_ID>",
+  "apiKey": "<API_KET>",
+  "action": "clean",
+  "enableLog": false,
+  "force": true,
+  "skipValidation":true,
+  "baseUrl": null
+}
