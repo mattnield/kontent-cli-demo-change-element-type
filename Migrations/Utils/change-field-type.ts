@@ -67,9 +67,10 @@ export const ConvertTextToRichText = async (client: ManagementClient, contentTyp
                 await updatePublishedVersion(variant, newValue);
                 console.log(`\tDone.`);
                 break;
-            case "Archived": // TODO: update any archived items to use the new element
+            case "Archived": 
+                // Update any archived items to use the new element (cant edit archived variants)
                 console.log(`Item ID {${variant.item.id}} is archived.`);
-                //await updateArchivedVersion(variant, newValue);
+                await updateArchivedVersion(variant, newValue);
                 console.log(`\tDone.`);
                 break;
             default: // update any draft items to use the new element
@@ -81,7 +82,7 @@ export const ConvertTextToRichText = async (client: ManagementClient, contentTyp
 
     }
 
-    // TODO: Delete the old element & rename the new element to the old element's codename
+    // Delete the old element & rename the new element to the old element's codename
     await client
         .modifyContentType()
         .byTypeCodename(contentTypeCodename)
@@ -105,6 +106,22 @@ export const ConvertTextToRichText = async (client: ManagementClient, contentTyp
             console.log(e);
         })
 
+    async function updateArchivedVersion(variant: LanguageVariantModels.ContentItemLanguageVariant, newValue: string)
+    {
+        await client.changeWorkflowStepOfLanguageVariant()
+            .byItemId(variant.item.id!)
+            .byLanguageId(variant.language.id!)
+            .byWorkflowStepCodename('draft')
+            .toPromise();
+        
+        await updateUnpublishedVersion(variant, newValue);
+
+        await client.changeWorkflowStepOfLanguageVariant()
+            .byItemId(variant.item.id!)
+            .byLanguageId(variant.language.id!)
+            .byWorkflowStepCodename('archived')
+            .toPromise();
+    }
     async function updatePublishedVersion(variant: LanguageVariantModels.ContentItemLanguageVariant, newValue: string) {
         // Create a new language variant with existing values
         await client.createNewVersionOfLanguageVariant()

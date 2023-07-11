@@ -9,6 +9,7 @@ const migration: MigrationModule = {
     // Create content item
     await publishSecondArticle(apiClient);
     await publishThirdArticleAndCreateDraft(apiClient);
+    await archiveFourthArticle(apiClient);
   },
 };
 
@@ -54,9 +55,18 @@ const publishThirdArticleAndCreateDraft = async (apiClient: ManagementClient) =>
           element: {
             codename: "title",
           },
-          value: "Third Article (edited)",
+          value: "Article Title (edited)",
         })
       ])
+      .toPromise();
+}
+
+const archiveFourthArticle = async (apiClient: ManagementClient) => {
+  await apiClient
+      .changeWorkflowStepOfLanguageVariant()
+      .byItemCodename('archived_article')
+      .byLanguageId('00000000-0000-0000-0000-000000000000')
+      .byWorkflowStepCodename('archived')
       .toPromise();
 }
 
