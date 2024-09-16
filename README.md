@@ -1,4 +1,4 @@
-# Kontent.ai CLI - Chang Type Example
+# Kontent.ai CLI - Change Type Example
 
 This is an example of how to use the Kontent.ai CLI to change the type of a content item element. Kontent.ai does not currently allow you to change the type of an element, so this is a workaround that will deal with both changing the type and updating the data in the element on any existing content items.
 
